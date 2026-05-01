@@ -1,0 +1,23 @@
+<!-- This works too -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log Analyzer</title>
+</head>
+<body>
+    <h1> Please uplaod your file to analyze</h1>
+    <form method = "POST" enctype="multipart/form-data">
+        <input type="file" name="logfile">
+        <button type="submit"> Upload</button>
+    </form>
+{%if total %}
+<h2> Total request:{{total}}</h2>
+{% endif%}
+{%if status_count %}
+<h2> Total status count </h2>
+{%for status, code in status_count.items()%}
+    {{status}} = {{code}}<br>
+    {%endfor%}
+{%endif%}
+</body>
+</html>
