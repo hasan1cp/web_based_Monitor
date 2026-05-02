@@ -5,6 +5,7 @@
     <title>Log Analyzer</title>
 </head>
 <body>
+    
     <h1> Please uplaod your file to analyze</h1>
     <form method = "POST" enctype="multipart/form-data">
         <input type="file" name="logfile">
@@ -19,5 +20,12 @@
     {{status}} = {{code}}<br>
     {%endfor%}
 {%endif%}
+{%if ips%}
+<h2> Total ips count: </h2> <br>
+{%for ip, count in ips.items()%}
+    {{ip}} = {{count}} <br>
+    {%endfor%}
+{%endif%}
+
 </body>
 </html>
