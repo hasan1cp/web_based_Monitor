@@ -8,6 +8,8 @@ def home():
     total = None
     status_count = {}
     ip_count = {}
+    sorted_ip = {}
+    top_ips = []
     if request.method == "POST":
         file = request.files["logfile"]
         content = file.read().decode("utf-8")
@@ -24,8 +26,10 @@ def home():
             ip = a.split()[0]
             ip_count[ip] = ip_count.get(ip, 0) + 1
 
+        sorted_ip = sorted(ip_count.items(), key = lambda x: x[1], reverse=True)
+        top_ips = sorted_ip[:5]
         
-    return render_template("hello.html", total= total, status_count = status_count, ips = ip_count)
+    return render_template("hello.html", total= total, status_count = status_count, ips = top_ips)
 
 
 
